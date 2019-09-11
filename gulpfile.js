@@ -18,8 +18,9 @@ const babel = require('gulp-babel');
 const sourcemaps = require('gulp-sourcemaps');
 // Imagemin and Plugins
 const imagemin = require('gulp-imagemin');
-const mozjpeg = require('imagemin-mozjpeg');
+// const mozjpeg = require('imagemin-mozjpeg');
 const webp = require('imagemin-webp');
+const guetzli = require('imagemin-guetzli');
 
 // Static Web Server stuff
 const browserSync = require('browser-sync');
@@ -151,7 +152,9 @@ gulp.task('imagemin', function() {
         webp({
           quality: 80,
         }),
-        mozjpeg(),
+        guetzli({
+          quality: 85,
+        }),
       ]))
       .pipe(gulp.dest('docs/images'));
 });
@@ -161,7 +164,7 @@ gulp.task('imagemin', function() {
  * @description deletes specified files
  */
 gulp.task('clean', function() {
-  return del.sync([
+  return del([
     'docs/',
     'src/converted-md/*.{html, md}',
   ]);
@@ -190,6 +193,4 @@ gulp.task('serve', function() {
  * @name default
  * @description uses clean, processCSS, build-template, imagemin to build the HTML content from Markdown source
  */
-gulp.task('default', function() {
-  runSequence('clean', 'processCSS', 'renderContent', 'imagemin');
-});
+gulp.task('default', gulp.series('clean', 'processCSS', 'renderContent', 'imagemin'));

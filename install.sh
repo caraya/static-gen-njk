@@ -8,10 +8,10 @@
 
 echo -e "Starting NPM installations\n"
 
-npm i -D gulp@3.9
+npm i -D gulp
 npm i -D browser-sync connect-history-api-fallback
 npm i -D gulp-sass gulp-postcss autoprefixer
-npm i -D gulp-imagemin@4.1 imagemin-mozjpeg imagemin-webp
+npm i -D gulp-imagemin imagemin-webp imagemin-guetzli
 npm i -D gulp-babel @babel/core @babel/preset-env gulp-sourcemaps
 npm i -D eslint eslint-config-google
 npm i -D del run-sequence gulp-ext-replace
