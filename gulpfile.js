@@ -58,7 +58,7 @@ markdown.register(env, marked);
 gulp.task('renderContent', function() {
   return gulp.src([
     templates + '/*.html',
-    templates + '/**/*.html',
+    templates + '/*.njk',
     content + '/*.md',
     content + '/**/*.md',
   ])

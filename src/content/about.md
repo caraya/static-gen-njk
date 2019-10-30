@@ -1,7 +1,3 @@
-{% extends "base.njk" %}
-
-{% block content %}
-
   <section class="hero is-default is-bold">
 
     <div class="hero-body">
@@ -47,5 +43,4 @@
     </div>
 
   </section>
-{% endblock %}
 
