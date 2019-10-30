@@ -20,7 +20,6 @@ const sourcemaps = require('gulp-sourcemaps');
 const imagemin = require('gulp-imagemin');
 // const mozjpeg = require('imagemin-mozjpeg');
 const webp = require('imagemin-webp');
-const guetzli = require('imagemin-guetzli');
 
 // Static Web Server stuff
 const browserSync = require('browser-sync');
@@ -37,6 +36,7 @@ const gulpnunjucks = require('gulp-nunjucks');
 const dist = 'docs';
 const src = 'src';
 const templates = src + '/partials';
+const content = src + '/content';
 
 // Where to pull files from?
 const env = new nunjucks.Environment(new nunjucks.FileSystemLoader(templates));
@@ -56,9 +56,15 @@ marked.setOptions({
 markdown.register(env, marked);
 
 gulp.task('renderContent', function() {
-  return gulp.src([templates + '/*.html', templates + '/**/*.html'])
+  return gulp.src([
+    templates + '/*.html',
+    templates + '/**/*.html',
+    content + '/*.md',
+    content + '/**/*.md',
+  ])
       // Renders template with nunjucks and marked
       .pipe(gulpnunjucks.compile('', {env: env}))
+      .pipe(extReplace('.html'))
       .pipe(gulp.dest(dist));
 });
 
@@ -151,9 +157,6 @@ gulp.task('imagemin', function() {
         }),
         webp({
           quality: 80,
-        }),
-        guetzli({
-          quality: 85,
         }),
       ]))
       .pipe(gulp.dest('docs/images'));
