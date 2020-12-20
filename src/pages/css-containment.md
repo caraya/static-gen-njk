@@ -1,6 +1,5 @@
-{% extends "base.njk" %}
+{% extends "layouts/base.njk" %}
 
-{% block content %}
 {% markdown %}
 
 # CSS Containment
@@ -90,4 +89,3 @@ To make sure that the layout and paint for our `new-element` div don't affect th
 * [CSS Contain](https://developer.mozilla.org/en-US/docs/Web/CSS/contain)
 
 {% endmarkdown %}
-{% endblock %}

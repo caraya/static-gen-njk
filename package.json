@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/caraya/static-gen-njk"
   },
   "keywords": [
     "static",
@@ -21,28 +21,28 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
-    "autoprefixer": "^9.6.1",
-    "browser-sync": "^2.26.7",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "acorn": "^7.4.1",
+    "autoprefixer": "^9.8.6",
+    "browser-sync": "^2.26.13",
     "connect-history-api-fallback": "^1.6.0",
     "del": "^5.1.0",
-    "eslint": "^6.3.0",
+    "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-ext-replace": "^0.3.0",
-    "gulp-imagemin": "^6.1.0",
-    "gulp-nunjucks": "^5.0.0",
+    "gulp-gray-matter": "^3.0.1",
+    "gulp-imagemin": "^6.2.0",
+    "gulp-nunjucks": "^5.1.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
-    "imagemin-guetzli": "^2.0.0",
     "imagemin-webp": "^5.1.0",
     "marked": "^0.7.0",
-    "nunjucks": "^3.2.0",
-    "nunjucks-markdown": "^2.0.1",
-    "run-sequence": "^2.2.1"
+    "nunjucks": "^3.2.2",
+    "nunjucks-markdown": "^2.0.1"
   }
 }

@@ -3,7 +3,6 @@
 // Require Gulp first
 const gulp = require('gulp');
 //  packageJson = require('./package.json'),
-const runSequence = require('run-sequence');
 const del = require('del');
 const extReplace = require('gulp-ext-replace');
 
@@ -31,12 +30,13 @@ const nunjucks = require('nunjucks');
 const markdown = require('nunjucks-markdown');
 const marked = require('marked');
 const gulpnunjucks = require('gulp-nunjucks');
+const grayMatter = require('gulp-gray-matter');
 
 // Nunjucks consts for file location
 const dist = 'docs';
 const src = 'src';
-const templates = src + '/partials';
-const content = src + '/content';
+const templates = src + '/templates';
+const content = src + '/pages';
 
 // Where to pull files from?
 const env = new nunjucks.Environment(new nunjucks.FileSystemLoader(templates));
@@ -56,16 +56,11 @@ marked.setOptions({
 markdown.register(env, marked);
 
 gulp.task('renderContent', function() {
-  return gulp.src([
-    templates + '/*.html',
-    templates + '/*.njk',
-    content + '/*.md',
-    content + '/**/*.md',
-  ])
-      // Renders template with nunjucks and marked
+  return gulp.src(content + '/**/*.md')
+      .pipe(grayMatter())
       .pipe(gulpnunjucks.compile('', {env: env}))
       .pipe(extReplace('.html'))
-      .pipe(gulp.dest(dist));
+      .pipe(gulp.dest('docs'));
 });
 
 
@@ -102,9 +97,7 @@ gulp.task('sass', function() {
 gulp.task('processCSS', function() {
   // What processors/plugins to use with PostCSS
   const PROCESSORS = [
-    autoprefixer({
-      browsers: ['last 3 versions'],
-    }),
+    autoprefixer(),
   ];
   return gulp.src('src/css/**/*.css')
       .pipe(sourcemaps.init())
@@ -173,6 +166,13 @@ gulp.task('clean', function() {
   ]);
 });
 
+gulp.task('copy', function() {
+  return gulp.src([
+    'src/scripts/**/*.js',
+  ])
+      .pipe(gulp.dest('docs/scripts'));
+});
+
 gulp.task('serve', function() {
   browserSync({
     port: 2509,
@@ -194,6 +194,6 @@ gulp.task('serve', function() {
 
 /**
  * @name default
- * @description uses clean, processCSS, build-template, imagemin to build the HTML content from Markdown source
+ * @description uses clean, processCSS, build-template, imagemin and copy to build the HTML content from Markdown source
  */
-gulp.task('default', gulp.series('clean', 'processCSS', 'renderContent', 'imagemin'));
+gulp.task('default', gulp.series('clean', 'processCSS', 'renderContent', 'imagemin', 'copy'));

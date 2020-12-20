@@ -1,4 +1,12 @@
-  <section class="hero is-default is-bold">
+---
+title: My page
+description: Isn't it great?
+---
+
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<section class="hero is-default is-bold">
 
     <div class="hero-body">
       <div class="container has-text-centered">
@@ -43,4 +51,4 @@
     </div>
 
   </section>
-
+{% endblock %}

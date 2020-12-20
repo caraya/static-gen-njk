@@ -1,5 +1,4 @@
-{% extends "base.njk" %}
-
+{% extends "layouts/base.njk" %}
 {% block content %}
 
   <section class="hero is-info is-medium is-bold">

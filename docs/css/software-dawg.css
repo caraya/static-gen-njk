@@ -1,0 +1,66 @@
+.blog-card {
+  margin-top: 2rem; }
+
+.blog-link h2 {
+  text-decoration: underline; }
+
+.blog-time {
+  font-size: 0.8rem; }
+
+p.blog-time {
+  margin-top: 0.5rem; }
+
+.blog-entry-head {
+  margin-top: 3rem; }
+
+a.blog-link,
+a.blog-link:active,
+a.blog-link:focus,
+a.blog-link:hover {
+  color: transparent !important; }
+
+p.text,
+.blog-image {
+  margin-top: 2rem;
+  margin-bottom: 2rem; }
+
+img.logo {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem; }
+
+article.blockquote .quote {
+  text-align: center;
+  font-size: 2.5rem;
+  font-style: italic;
+  font-weight: bold; }
+
+article.blockquote .cite {
+  text-align: right; }
+
+footer {
+  font-family: Lato, sans-serif;
+  margin-top: 3rem;
+  font-size: 0.8rem; }
+
+@media screen and (min-width: 1088px) {
+  .navbar-item.is-active:not(:hover),
+  .navbar-link.is-active:not(:hover) {
+    background-color: #fafafa !important; } }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Alegreya Sans", sans-serif; }
+
+.title,
+.subtitle,
+.navbar {
+  font-family: "Alegreya Sans", sans-serif; }
+
+.footer {
+  padding: 3rem 1.5rem 3rem; }
+
+/*# sourceMappingURL=software-dawg.css.map */
